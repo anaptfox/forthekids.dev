@@ -19,10 +19,10 @@ const Header = styled.h2`
 `
 
 const Categories = [
-  "High School (Ages 14-18)",
   "Early Childhood (Ages 3-8)",
   "Middle Childhood (Ages 9-11)",
   "Middle School (Ages 12-14)",
+  "High School (Ages 14-18)",
 ]
 
 const Category = ({ name, data }) => {
@@ -40,7 +40,7 @@ const Category = ({ name, data }) => {
 
 const IndexPage = ({ data }) => {
   const allData = flatten(data.allAirtable.edges)
-  
+
   const allCategories = Categories.map(category => {
     const isInCategory = c => {
       if (R.isEmpty(c.Category)) return false
