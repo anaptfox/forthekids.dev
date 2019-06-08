@@ -1,7 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link, graphql } from "gatsby"
 import styled from "@emotion/styled"
 import * as R from "ramda"
+import { Accordion, Icon } from "semantic-ui-react"
+
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
@@ -19,21 +21,36 @@ const Header = styled.h2`
 `
 
 const Categories = [
-  "Early Childhood (Ages 3-8)",
-  "Middle Childhood (Ages 9-11)",
-  "Middle School (Ages 12-14)",
+  "Pre-K to Kindergarten (Ages 3-5)",
+  "Elementary (Ages 6-9)",
+  "Middle School (Ages 10-13)",
   "High School (Ages 14-18)",
 ]
 
 const Category = ({ name, data }) => {
+  const [open, setOpen] = useState(false)
   const list = data.map(({ Name, URL }) => {
-    return <li><a target="_blank" href={URL}>{Name}</a></li>
+    return (
+      <li>
+        <a target="_blank" href={URL}>
+          {Name}
+        </a>
+      </li>
+    )
   })
+
+  const handleClick = () => {
+    setOpen(!open)
+  }
 
   return (
     <div>
-      <Header>{name}</Header>
-      <ul>{list}</ul>
+      <Accordion.Title active={open} onClick={handleClick}>
+        <Header>{name}</Header>
+      </Accordion.Title>
+      <Accordion.Content active={open}>
+        <ul>{list}</ul>
+      </Accordion.Content>
     </div>
   )
 }
@@ -54,7 +71,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="For The Kids" />
-      {allCategories}
+      <Accordion>{allCategories}</Accordion>
     </Layout>
   )
 }

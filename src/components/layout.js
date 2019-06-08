@@ -10,6 +10,7 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
+import "semantic-ui-css/semantic.min.css"
 import "./layout.css"
 
 const Layout = ({ children }) => (
@@ -24,7 +25,11 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <>
+      <div
+        style={{
+          height: "100%",
+        }}
+      >
         <Header siteTitle={data.site.siteMetadata.title} />
         <div
           style={{
@@ -33,15 +38,16 @@ const Layout = ({ children }) => (
             padding: `0px 1.0875rem 1.45rem`,
             paddingTop: 0,
           }}
+          className="wrapper"
         >
-          <main>{children}</main>
+          <main className="theContent">{children}</main>
           <footer>
             Made with ❤️ by{" "}
             <a href="https://twitter.com/anaptfox">Taron Foxworth</a> and{" "}
             <a href="https://twitter.com/_torridee">Victoria Dickerson</a>
           </footer>
         </div>
-      </>
+      </div>
     )}
   />
 )
