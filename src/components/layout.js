@@ -25,7 +25,7 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <img src="logo.png" alt="Logo"/>
         <div
           style={{
             margin: `0 auto`,
@@ -36,9 +36,9 @@ const Layout = ({ children }) => (
         >
           <main>{children}</main>
           <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
+            Made with ❤️ by{" "}
+            <a href="https://twitter.com/anaptfox">Taron Foxworth</a> and{" "}
+            <a href="https://twitter.com/_torridee">Victoria Dickerson</a>
           </footer>
         </div>
       </>
